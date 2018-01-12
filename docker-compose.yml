@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+
+  redmine:
+    image: "library/redmine:3.4.4"
+    networks:
+      - redmine
+    volumes:
+      - "./config/configuration.yml:/usr/src/redmine/config/configuration.yml:ro"
+      - "./config/additional_environment.rb:/usr/src/redmine/config/additional_environment.rb:ro"
+      - "redmine-sqlite:/usr/src/redmine/sqlite"
+
+  nginx:
+    build: ./nginx-forwardproxy/
+    environment:
+      HTTPSPORT: 3443
+      DOMAINNAME: beluga.openmicroscopy.org
+      BACKENDS: "/|http://redmine:3000"
+    networks:
+      - redmine
+    ports:
+      - "3443:3443"
+
+networks:
+  redmine:
+
+volumes:
+  redmine-sqlite:
