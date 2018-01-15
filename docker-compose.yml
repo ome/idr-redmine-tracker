@@ -8,6 +8,17 @@ services:
       - redmine
     volumes:
       - "./config/configuration.yml:/usr/src/redmine/config/configuration.yml:ro"
+      - "./config/database.yml:/usr/src/redmine/config/database.yml:ro"
+      - "./config/additional_environment.rb:/usr/src/redmine/config/additional_environment.rb:ro"
+      - "redmine-sqlite:/usr/src/redmine/sqlite"
+
+  redmine-email:
+    build: ./redmine-email/
+    networks:
+      - redmine
+    volumes:
+      - "./config/configuration.yml:/usr/src/redmine/config/configuration.yml:ro"
+      - "./config/database.yml:/usr/src/redmine/config/database.yml:ro"
       - "./config/additional_environment.rb:/usr/src/redmine/config/additional_environment.rb:ro"
       - "redmine-sqlite:/usr/src/redmine/sqlite"
 
