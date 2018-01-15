@@ -15,7 +15,7 @@ services:
     build: ./nginx-forwardproxy/
     environment:
       HTTPSPORT: 3443
-      DOMAINNAME: beluga.openmicroscopy.org
+      DOMAINNAME: idr0-slot3.openmicroscopy.org
       BACKENDS: "/|http://redmine:3000"
     networks:
       - redmine
