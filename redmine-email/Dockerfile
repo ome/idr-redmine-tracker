@@ -5,6 +5,8 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends cron && \
     rm -rf /var/lib/apt/lists/*
 
+# No idea why this is necessary when using postgres but not sqlite
+RUN chown redmine:redmine /usr/src/redmine/Gemfile.lock
 ADD run-gmail.sh /usr/local/bin/
 ADD crontab /etc/crontab
 

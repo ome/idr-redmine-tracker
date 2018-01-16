@@ -2,6 +2,15 @@ version: "3"
 
 services:
 
+  postgres:
+    image: "library/postgres:9.6.6"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      - redmine
+    volumes:
+      - "redmine-db:/var/lib/postgresql/data"
+
   redmine:
     image: "library/redmine:3.4.4"
     networks:
@@ -10,7 +19,7 @@ services:
       - "./config/configuration.yml:/usr/src/redmine/config/configuration.yml:ro"
       - "./config/database.yml:/usr/src/redmine/config/database.yml:ro"
       - "./config/additional_environment.rb:/usr/src/redmine/config/additional_environment.rb:ro"
-      - "redmine-sqlite:/usr/src/redmine/sqlite"
+      - "redmine-files:/usr/src/redmine/files"
 
   redmine-email:
     build: ./redmine-email/
@@ -20,7 +29,7 @@ services:
       - "./config/configuration.yml:/usr/src/redmine/config/configuration.yml:ro"
       - "./config/database.yml:/usr/src/redmine/config/database.yml:ro"
       - "./config/additional_environment.rb:/usr/src/redmine/config/additional_environment.rb:ro"
-      - "redmine-sqlite:/usr/src/redmine/sqlite"
+      - "redmine-files:/usr/src/redmine/files"
 
   nginx:
     build: ./nginx-forwardproxy/
@@ -37,4 +46,5 @@ networks:
   redmine:
 
 volumes:
-  redmine-sqlite:
+  redmine-db:
+  redmine-files:
