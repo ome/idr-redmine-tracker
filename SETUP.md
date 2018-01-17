@@ -14,14 +14,17 @@ The following steps should be done from the `Administration` panel as an adminis
 
 ## Settings
 - Load the default configuration
-- Under `General` enter `Host name and path` without the protocol
+- Under `General` set `Host name and path` and `Protocol`, set `Text formatting` to `Markdown`
 - Under `Authentication` set `Authentication required`
 - Under `Projects` deselect all items
 - Under `Files` optionally increase the `Attachment max. size`
-- Under `Email notifications` set the `Emission email address`
+- Under `Email notifications` set the `Emission email address`, update the URL in `Email footer`
 - Under `Incoming emails` optionally set `Truncate emails after one of these lines`
-- Configure LDAP logins
 - Other settings can be changed as required
+
+## LDAP authentication
+- Add a new authentication mode using LDAP server
+- Enable `On-the-fly user creation`
 
 ## Project
 - Create a project `IDR Submission`
@@ -38,7 +41,3 @@ The following steps should be done from the `Administration` panel as an adminis
 - Set `Issues visibility`: `Issues created by or assigned to the user`
 - Remove all permissions apart from `View files ` `View Issues` `Add issues` `Edit own notes`
 - Under `Issue tracking` ensure the role can `View Issues` and `Add Issues` on `Support`
-
-## LDAP authentication
-- Add a new authentication mode using LDAP server
-- Enable `On-the-fly user creation`

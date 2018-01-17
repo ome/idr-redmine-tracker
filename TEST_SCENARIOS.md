@@ -24,13 +24,13 @@ Notes
 1. Send an email to `REDMINE_EMAIL` from your external non-LDAP email address with subject and body
 2. Check that you receive an email with account login details for your external email
 3. Check that these login details work on `REDMINE_URL`
-4. Check that an issue has been created `Support` tracker of `IDR Submissions` corresponding to the sent email
+4. Check that an issue has been created in the `Support` tracker of `IDR Submissions` corresponding to the sent email
 5. Check your LDAP email for an email notification corresponding to this issue
 
 ## Existing external user submit new issue
 1. Send an email to `REDMINE_EMAIL` from your external non-LDAP email address with a subject and body
 3. Login to `REDMINE_URL`
-4. Check that an issue has been created `Support` tracker of `IDR Submissions` corresponding to the sent email
+4. Check that an issue has been created in the `Support` tracker of `IDR Submissions` corresponding to the sent email
 5. Check that you can also see your previously created issues
 6. Check your LDAP email for an email notification corresponding to this issue
 
