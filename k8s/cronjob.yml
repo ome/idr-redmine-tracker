@@ -1,0 +1,54 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: idr-redmine-email
+spec:
+  schedule: "*/5 * * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 24
+  failedJobsHistoryLimit: 6
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: idr-redmine-email
+        spec:
+          restartPolicy: OnFailure
+          containers:
+          - name: idr-redmine
+            image: "library/redmine:3.4.4"
+            args:
+            - rake
+            - redmine:email:receive_imap
+            - host=imap.gmail.com
+            - username=$(GMAIL_USERNAME)
+            - password=$(GMAIL_PASSWORD)
+            - ssl=1
+            - port=993
+            - unknown_user=create
+            - move_on_success=RedmineSuccess
+            - move_on_failure=RedmineFailure
+            - project=idr-submission
+            - tracker=Support
+            - no_permission_check=1
+            - default_group=submitters
+            envFrom:
+            - configMapRef:
+                name: idr-redmine-config-private
+            volumeMounts:
+            - name: config-volume
+              mountPath: /usr/src/redmine/config/configuration.yml
+              subPath: configuration.yml
+            - name: config-volume
+              mountPath: /usr/src/redmine/config/environments/production.rb
+              subPath: production.rb
+            - name: idr-redmine-files
+              mountPath: /usr/src/redmine/files
+          volumes:
+          - name: config-volume
+            configMap:
+              name: idr-redmine-config
+          - name: idr-redmine-files
+            persistentVolumeClaim:
+              claimName: idr-redmine-files-rw

@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: idr-redmine
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: idr-redmine
+    spec:
+      containers:
+      - name: idr-redmine
+        image: "library/redmine:3.4.4"
+        envFrom:
+        - configMapRef:
+            name: idr-redmine-config-private
+        ports:
+        - name: redmine
+          containerPort: 3000
+        volumeMounts:
+        - name: config-volume
+          mountPath: /usr/src/redmine/config/configuration.yml
+          subPath: configuration.yml
+        - name: config-volume
+          mountPath: /usr/src/redmine/config/environments/production.rb
+          subPath: production.rb
+        - name: idr-redmine-files
+          mountPath: /usr/src/redmine/files
+      volumes:
+      - name: config-volume
+        configMap:
+          name: idr-redmine-config
+      - name: idr-redmine-files
+        persistentVolumeClaim:
+          claimName: idr-redmine-files-rw
