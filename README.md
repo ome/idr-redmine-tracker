@@ -14,7 +14,10 @@ The primary aim is to manage multiple complex email threads concerning data subm
 ## Deployment
 
 This application is deployed on Kubernetes using the manifests in [k8s](k8s).
-To run this yourself add your postgres and GMail credentials to [k8s/secret-config.yaml.example](secret-config.yaml.example), and change [k8s/pv-nfs.yml](pv-nfs.yml) to point to a persistent volume.
+To run this:
+- Add your PostgreSQL and GMail credentials to [secret-config.yaml.example](k8s/secret-config.yaml.example)
+- Change [pv-nfs.yml](k8s/pv-nfs.yml) to point to a persistent volume
+- Create the Kubernetes resources: `kubectl apply -f k8s`
 
 ## Issues to be discussed
 
