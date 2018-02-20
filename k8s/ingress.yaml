@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: idr-redmine
+  labels:
+    app: idr-redmine
+spec:
+  rules:
+  - host: idr-redmine.openmicroscopy.org
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: idr-redmine
+          servicePort: 80
+  tls:
+  - hosts:
+    - idr-redmine.openmicroscopy.org
