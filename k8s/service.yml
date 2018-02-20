@@ -5,11 +5,9 @@ metadata:
   labels:
     name: idr-redmine
 spec:
-  type: NodePort
-  #type: ClusterIP
+  type: ClusterIP
   ports:
   - port: 80
     targetPort: redmine
-    #nodePort: 31800
   selector:
     app: idr-redmine
