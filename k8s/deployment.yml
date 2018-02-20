@@ -12,8 +12,11 @@ spec:
       containers:
       - name: idr-redmine
         image: "library/redmine:3.4.4"
+        env:
+        - name: RAILS_ENV
+          value: production
         envFrom:
-        - configMapRef:
+        - secretRef:
             name: idr-redmine-config-private
         ports:
         - name: redmine
@@ -27,10 +30,11 @@ spec:
           subPath: production.rb
         - name: idr-redmine-files
           mountPath: /usr/src/redmine/files
+          subPath: files
       volumes:
       - name: config-volume
         configMap:
           name: idr-redmine-config
       - name: idr-redmine-files
         persistentVolumeClaim:
-          claimName: idr-redmine-files-rw
+          claimName: idr-redmine-volume
