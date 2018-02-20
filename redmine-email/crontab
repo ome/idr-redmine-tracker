@@ -1,1 +1,0 @@
-*/5 * * * * root /usr/local/bin/gosu redmine /usr/local/bin/run-gmail.sh 1> /proc/1/fd/1 2> /proc/1/fd/2
