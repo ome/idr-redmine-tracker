@@ -13,7 +13,7 @@ Notes
 
 ## Login and settings
 1. Login to `REDMINE_URL` with LDAP
-2. Ask an admin to add you to the `IDR Submissions` project with roles `Manager` and `Developer`
+2. Ask an admin to add you to the `IDR Submissions` project with role `Developer`
 3. Modify your email notification settings to `For any event on all my projects`
 
 ## LDAP user submit new issue
