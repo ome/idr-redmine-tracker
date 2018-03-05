@@ -1,0 +1,4 @@
+apiVersion: v1
+description: IDR submission ticketing system
+name: idr-redmine-tracker
+version: 0.1.0

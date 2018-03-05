@@ -1,3 +1,4 @@
+{{ if .Values.gmail.enabled -}}
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
@@ -56,3 +57,4 @@ spec:
           - name: idr-redmine-files
             persistentVolumeClaim:
               claimName: idr-redmine-volume
+{{- end }}

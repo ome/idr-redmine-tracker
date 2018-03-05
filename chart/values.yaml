@@ -1,0 +1,16 @@
+secrets:
+  create: false
+
+db:
+  host: postgres
+  user: postgres
+  password: postgres
+  name: postgres
+
+gmail:
+  enabled: false
+  user:
+  password:
+
+ingress:
+  host: idr-redmine.openmicroscopy.org
