@@ -17,7 +17,7 @@ spec:
           restartPolicy: OnFailure
           containers:
           - name: idr-redmine
-            image: "library/redmine:3.4.4"
+            image: "library/redmine:3.4.6"
             args:
             - rake
             - redmine:email:receive_imap
