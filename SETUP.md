@@ -44,14 +44,19 @@ The following steps should be done from the `Administration` panel as an adminis
 ## Role
 - Open the `Reporter` role (created by default)
 - Set `Issues visibility`: `Issues created by or assigned to the user`
-- Remove all permissions apart from `View files ` `View Issues` `Add issues` `Edit own notes`
+- Remove all permissions apart from `View files ` `View Issues` `Add issues` `Edit own notes`, `View wiki`
 - Under `Issue tracking` ensure the role can `View Issues` and `Add Issues` on `Support`
+- In `Roles` `Permissions report` tick `Hide in memberbox` for all roles
 
 ### Additionals Plugin for Redmine
 The IDR Redmine Docker image includes [Additionals Plugins for Redmine](https://additionals.readthedocs.io) for additional configuration.
 Open `Administration`, `Additionals`:
 - Under `General` set some custom text
-- Under `Overview page` set some custom text
+- Under `Overview page` set some custom text for `top` (provide an introduction to the system) and `bottom` (provide contact information in case of problems)
+
+### Custom IDR template overrides
+Some Redmine templates are overridden by the [idr_overrides plugin](docker/idr_overrides).
+If you upgrade Redmine you may need to update these to match any new templates.
 
 ## Other setup
 
