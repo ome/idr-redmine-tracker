@@ -47,12 +47,14 @@ The following steps should be done from the `Administration` panel as an adminis
 - Remove all permissions apart from `View files ` `View Issues` `Add issues` `Edit own notes`, `View wiki`
 - Under `Issue tracking` ensure the role can `View Issues` and `Add Issues` on `Support`
 - In `Roles` `Permissions report` tick `Hide in memberbox` for all roles
+- For the two roles `Mon member` and `Anonymous` uncheck all permissions apart from `Hide in memberbox`
 
 ### Additionals Plugin for Redmine
 The IDR Redmine Docker image includes [Additionals Plugins for Redmine](https://additionals.readthedocs.io) for additional configuration.
 Open `Administration`, `Additionals`:
 - Under `General` set some custom text
 - Under `Overview page` set some custom text for `top` (provide an introduction to the system) and `bottom` (provide contact information in case of problems)
+- Under `Projects` set some custom text for `Project guide`
 
 ### Custom IDR template overrides
 Some Redmine templates are overridden by the [idr_overrides plugin](docker/idr_overrides).
@@ -70,6 +72,12 @@ You can configure Redmine to copy all emails to a mailing list.
 
 ### Default admin account
 Convert an existing LDAP user to Redmine `Administrator` and delete the default `admin` account.
+
+### New developer accounts
+- Ask new user to login with LDAP
+- Add user to the `IDR Submissions` project with role `Developer` (Under `Users` click on user, `Projects`, `IDR submission`, `edit`)
+- User should modify email notification settings to `For any event on all my projects`
+- User should change their email address from the default LDAP to the address normally used as the sender address (e.g. exclude dots if necessary), or add other addresses that they use.
 
 ### Issue statuses
 Add or modify statuses in under `Administration` `Issue statuses`
