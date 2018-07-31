@@ -1,0 +1,1 @@
+allow_watchers_and_contributers_access_to_issues_3.4.2.patch is taken from https://www.redmine.org/issues/14318#note-36
