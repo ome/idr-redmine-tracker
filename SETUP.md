@@ -84,3 +84,14 @@ Add or modify statuses in under `Administration` `Issue statuses`
 
 ### LDAP email addresses
 If the LDAP email does not match your normal email (used as the sender address on replies) change it.
+
+### New user accounts
+User accounts will normally be auto-created when an email is sent to create a submission.
+If you need to manually create an account, for example to add a watcher on an issue, go to `Users` `New User`
+- Set `Login` to the user's email address
+- Enter `First name`, `Last name`, `Email`
+- Select `Generate password`, `Send account information to the user`
+- Click `Create`
+Go to `Users`, click on the new user
+- Under `Groups` select `submitters` and `Save`
+- Under `Projects`, `IDR submission`, `edit` the user should automatically be a member of the `Reporter` role only
