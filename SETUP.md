@@ -43,11 +43,11 @@ The following steps should be done from the `Administration` panel as an adminis
 
 ## Role
 - Open the `Reporter` role (created by default)
-- Set `Issues visibility`: `Issues created by or assigned to the user`
-- Remove all permissions apart from `View files ` `View Issues` `Add issues` `Edit own notes`, `View wiki`
-- Under `Issue tracking` ensure the role can `View Issues` and `Add Issues` on `Support`
+- Set `Issues visibility`: `Issues created by, assigned to, or watched by the user` (this uses a custom Redmine extension)
+- Remove all permissions apart from `View files ` `View Issues` `Add notes` `Edit own notes` `View watchers list` `View wiki`
 - In `Roles` `Permissions report` tick `Hide in memberbox` for all roles
 - For the two roles `Mon member` and `Anonymous` uncheck all permissions apart from `Hide in memberbox`
+- Note do not allow `Add issues` as this lists all members in the `Assignee` field
 
 ### Additionals Plugin for Redmine
 The IDR Redmine Docker image includes [Additionals Plugins for Redmine](https://additionals.readthedocs.io) for additional configuration.
