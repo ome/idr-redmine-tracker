@@ -1,3 +1,4 @@
+{{ if .Values.gmail.enabled -}}
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
@@ -5,8 +6,8 @@ metadata:
 spec:
   schedule: "*/5 * * * *"
   concurrencyPolicy: Forbid
-  successfulJobsHistoryLimit: 24
-  failedJobsHistoryLimit: 6
+  successfulJobsHistoryLimit: {{ .Values.gmail.keepSuccessfulJobs }}
+  failedJobsHistoryLimit: {{ .Values.gmail.keepFailedJobs }}
   jobTemplate:
     spec:
       template:
@@ -17,7 +18,7 @@ spec:
           restartPolicy: OnFailure
           containers:
           - name: idr-redmine
-            image: "library/redmine:3.4.4"
+            image: {{ .Values.redmine.image }}
             args:
             - rake
             - redmine:email:receive_imap
@@ -38,7 +39,7 @@ spec:
               value: production
             envFrom:
             - secretRef:
-                name: idr-redmine-config-private
+                name: {{ .Values.secrets.name }}
             volumeMounts:
             - name: config-volume
               mountPath: /usr/src/redmine/config/configuration.yml
@@ -55,4 +56,5 @@ spec:
               name: idr-redmine-config
           - name: idr-redmine-files
             persistentVolumeClaim:
-              claimName: idr-redmine-volume
+              claimName: {{ .Values.redmine.pvcName }}
+{{- end }}

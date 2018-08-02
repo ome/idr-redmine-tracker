@@ -13,13 +13,13 @@ The primary aim is to manage multiple complex email threads concerning data subm
 
 ## Deployment
 
-This application is deployed on Kubernetes using the manifests in [k8s](k8s).
+This application is deployed on Kubernetes using Helm along with the manifests in [k8s](k8s).
+
 To run this:
 - Add your PostgreSQL and GMail credentials to [secret-config.yaml.example](k8s/secret-config.yaml.example)
 - Change [pv-nfs.yml](k8s/pv-nfs.yml) to point to a persistent volume
-- Create the Kubernetes resources: `kubectl apply -f k8s`
-
-## Issues to be discussed
-
-- Should submitters have a login to the system, or should everything be done by email only?
-- Should the quoted section of email replies be discarded (works if everyone top-posts, fails if replies are bottom-posted or in-line)
+- Create the Kubernetes namespace: `kubectl create namespace idr-redmine`
+- Create the Kubernetes secrets: Copy template file in `k8s/` and run `kubectl -n idr-redmine apply -f k8s`
+  These are not currently managed using Helm since at present the private configuration may be stored in a non-accessible location
+- Install the application using Helm: `helm upgrade --install idr-redmine ./chart/`
+- Note the purpose of this Helm chart is to manage internal applications using standard tools, and in the current state is not customisable, nor does it follow best practice for a public chart.

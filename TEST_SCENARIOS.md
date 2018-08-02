@@ -13,8 +13,10 @@ Notes
 
 ## Login and settings
 1. Login to `REDMINE_URL` with LDAP
-2. Ask an admin to add you to the `IDR Submissions` project with role `Developer`
-3. Modify your email notification settings to `For any event on all my projects`
+2. Check the home page is informative
+3. Ask an admin to add you to the `IDR Submissions` project with role `Developer`
+4. Modify your email notification settings to `For any event on all my projects`
+5. Change your email address from the default LDAP to the address you normally use as your sender address (e.g. exclude dots if necessary)
 
 ## LDAP user submit new issue
 1. Send an email to `REDMINE_EMAIL` from your LDAP email address with a subject and body
@@ -62,3 +64,4 @@ Notes
 ## Security
 1. Login to `REDMINE_URL` as an external user
 2. Attempt to access issues that were created by a different user, e.g. by browsing, searching, or pasting a known URL. It should not be possible.
+3. Go to the Project Overview page. Check that the list of members is not shown.

@@ -1,0 +1,23 @@
+redmine:
+  image: "library/redmine:3.4.6"
+  pvcName: idr-redmine-volume
+
+secrets:
+  create: true
+  name: idr-redmine-secret
+
+db:
+  host: postgres
+  user: postgres
+  password: postgres
+  name: postgres
+
+gmail:
+  enabled: false
+  user:
+  password:
+  keepSuccessfulJobs: 3
+  keepFailedJobs: 6
+
+ingress:
+  host: localhost

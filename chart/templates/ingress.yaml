@@ -6,7 +6,7 @@ metadata:
     app: idr-redmine
 spec:
   rules:
-  - host: idr-redmine.openmicroscopy.org
+  - host: {{ .Values.ingress.host }}
     http:
       paths:
       - path: /
@@ -15,4 +15,4 @@ spec:
           servicePort: 80
   tls:
   - hosts:
-    - idr-redmine.openmicroscopy.org
+    - {{ .Values.ingress.host }}
