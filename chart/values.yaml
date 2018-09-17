@@ -21,3 +21,4 @@ gmail:
 
 ingress:
   host: localhost
+  annotations: {}
