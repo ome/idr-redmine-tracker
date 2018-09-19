@@ -4,6 +4,10 @@ metadata:
   name: idr-redmine
   labels:
     app: idr-redmine
+{{- with .Values.ingress.annotations }}
+  annotations:
+{{ toYaml . | indent 4 }}
+{{- end }}
 spec:
   rules:
   - host: {{ .Values.ingress.host }}
