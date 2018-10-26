@@ -4,10 +4,11 @@ kind: CronJob
 metadata:
   name: idr-redmine-email
 spec:
-  schedule: "*/5 * * * *"
+  schedule: {{ .Values.gmail.schedule | quote }}
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: {{ .Values.gmail.keepSuccessfulJobs }}
   failedJobsHistoryLimit: {{ .Values.gmail.keepFailedJobs }}
+  startingDeadlineSeconds: {{ .Values.gmail.startingDeadlineSeconds }}
   jobTemplate:
     spec:
       template:
