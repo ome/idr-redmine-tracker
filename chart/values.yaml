@@ -18,6 +18,13 @@ gmail:
   password:
   keepSuccessfulJobs: 3
   keepFailedJobs: 6
+  schedule: "*/5 * * * *"
+  # There's a bug where if the cronjob is suspended for more than 100
+  # triggers it's disabled:
+  # https://github.com/kubernetes/kubernetes/issues/42649
+  # We can get around this by reducing the time period over which the
+  # suspensions are counted. 6h == 72 * 5m runs
+  startingDeadlineSeconds: 21600
 
 ingress:
   host: localhost
